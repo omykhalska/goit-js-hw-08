@@ -9,10 +9,10 @@ if (localStorage.getItem('feedback-form-state')) {
   inputRef.message.value = parsedData.message;
 }
 
-inputRef.addEventListener('input', throttle(onForminput, 500));
+inputRef.addEventListener('input', throttle(onFormInput, 500));
 inputRef.addEventListener('submit', onBtnSubmit);
 
-function onForminput(e) {
+function onFormInput(e) {
   if (e.target.name === 'email') {
     dataStored.email = e.target.value.trim();
     dataStored.message = inputRef.message.value;
@@ -27,10 +27,11 @@ function onForminput(e) {
 function onBtnSubmit(e) {
   e.preventDefault();
   console.log(dataStored);
-  removeLocalDataStored('feedback-form-state');
-  inputRef.reset();
+  clearData('feedback-form-state');
 }
 
-function removeLocalDataStored(key) {
+function clearData(key) {
   localStorage.removeItem(key);
+  inputRef.reset();
+  dataStored = { email: '', message: '' };
 }
