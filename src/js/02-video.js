@@ -7,11 +7,6 @@ let currentTimeStored = 0;
 
 if (localStorage.getItem('videoplayer-current-time')) {
   currentTimeStored = JSON.parse(localStorage.getItem('videoplayer-current-time'));
-  console.log(
-    `Мы остановили просмотр на ${Number.parseInt(currentTimeStored / 60)}мин:${
-      Number.parseInt(currentTimeStored) % 60
-    }сек. Продолжаем :-)`,
-  );
 }
 
 player.on('timeupdate', throttle(onPlay, 1000));
