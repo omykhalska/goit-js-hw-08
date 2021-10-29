@@ -26,6 +26,10 @@ function onFormInput(e) {
 }
 
 function onBtnSubmit(e) {
+  if (!dataStored.email || !dataStored.message) {
+    alert(`All the fields must be filled in`);
+    return;
+  }
   e.preventDefault();
   console.log(dataStored);
   clearData(LOCALSTORAGE_KEY);
