@@ -8,6 +8,8 @@ const parsedData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
 if (localStorage.getItem(LOCALSTORAGE_KEY)) {
   inputRef.email.value = parsedData.email;
   inputRef.message.value = parsedData.message;
+  dataStored.email = parsedData.email;
+  dataStored.message = parsedData.message;
 }
 
 inputRef.addEventListener('input', throttle(onFormInput, 500));
